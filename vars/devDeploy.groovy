@@ -3,7 +3,7 @@ def call(Map config= [:])
 	
 	sh "echo Start setting env and deployment config variables"
 
-	sh "echo cURL :  ${config.cURL}"
+	sh "echo cURL :  ${config}"
 
 	/* envVariables = [
 	 					"cloneURL" : ${config.cURL},
