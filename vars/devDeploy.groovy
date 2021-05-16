@@ -1,12 +1,16 @@
 def call(Map config= [:])
 { 
 	
-	envVariables = [
-						"cloneURL" : ${config.cURL},
-						"cloneBranch" : ${config.cBranch},
-      					"email" : ${config.email}
-					]
-	/*
+	sh "echo envVariables and config variables initialized!"
+
+	sh "echo cURL :  ${config.cURL}"
+
+	/* envVariables = [
+	 					"cloneURL" : ${config.cURL},
+	 					"cloneBranch" : ${config.cBranch},
+       					"email" : ${config.email}
+	 				]
+	 
 	deployProperties = [
 
 					"businessGroupName" : ${config.bgName},
