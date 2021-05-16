@@ -22,6 +22,6 @@ def call(Map config= [:])
 					"muleKeyId" : config.mkId
 				]
 
-  	sh "echo deployVariables : ${deployVariables}"
+  	sh "echo deployVariables : ${deployProperties}"
 	sh "echo End of setting env and deployment config variables"
 }
