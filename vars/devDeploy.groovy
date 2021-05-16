@@ -6,9 +6,9 @@ def call(Map config= [:])
 	sh "echo cURL :  ${config}"
 
 	envVariables = [
-	 					"cloneURL" : ${config.cURL},
-	 					"cloneBranch" : ${config.cBranch},
-       					"email" : ${config.email}
+	 					"cloneURL" : config.cURL,
+	 					"cloneBranch" : config.cBranch,
+       					"email" : config.email
 	 				]
 	 
 	/*deployProperties = [
