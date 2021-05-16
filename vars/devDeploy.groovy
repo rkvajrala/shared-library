@@ -11,17 +11,17 @@ def call(Map config= [:])
        					"email" : config.email
 	 				]
 	 
-	/*deployProperties = [
+	deployProperties = [
 
-					"businessGroupName" : ${config.bgName},
-					"targetEnvironmentName" : ${config.teName},
-					"numberOfWorkers" : ${config.nofWorkers},
-					"workerSize" : ${config.wSize},
-					"deployRegion" : ${config.dRegion},
-					"deployNamePrefix" : ${config.dnPrefix},
-					"muleKeyId" : ${config.mkId}
+					"businessGroupName" : config.bgName,
+					"targetEnvironmentName" : config.teName,
+					"numberOfWorkers" : config.nofWorkers,
+					"workerSize" : config.wSize,
+					"deployRegion" : config.dRegion,
+					"deployNamePrefix" : config.dnPrefix,
+					"muleKeyId" : config.mkId
 				]
 
-  */
+  
 	sh "echo End of setting env and deployment config variables"
 }
