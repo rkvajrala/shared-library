@@ -1,7 +1,7 @@
 def call(Map config= [:])
 { 
 	
-	sh "echo envVariables and config variables initialized!"
+	sh "echo Start setting env and deployment config variables"
 
 	sh "echo cURL :  ${config.cURL}"
 
@@ -23,5 +23,5 @@ def call(Map config= [:])
 				]
 
   */
-	sh "echo envVariables and config variables initialized!"
+	sh "echo End of setting env and deployment config variables"
 }
