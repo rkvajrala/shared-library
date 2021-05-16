@@ -1,6 +1,7 @@
 def call(Map config= [:])
 { 
 	
+	/*
 	envVariables = [
 						"cloneURL" : ${config.cURL},
 						"cloneBranch" : ${config.cBranch},
@@ -17,5 +18,6 @@ def call(Map config= [:])
 					"muleKeyId" : ${config.mkId}
 				]
 
+  */
 	sh "echo envVariables and config variables initialized!"
 }
