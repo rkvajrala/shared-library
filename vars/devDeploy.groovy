@@ -2,7 +2,7 @@ def call(Map config= [:])
 { 
 	
 	envVariables = [
-						"cloneURL" : ${config.cURL)},
+						"cloneURL" : ${config.cURL},
 						"cloneBranch" : ${config.cBranch},
       					"email" : ${config.email}
 					]
