@@ -5,13 +5,13 @@ def call(Map config= [:])
 
 	sh "echo cURL :  ${config}"
 
-	/* envVariables = [
+	envVariables = [
 	 					"cloneURL" : ${config.cURL},
 	 					"cloneBranch" : ${config.cBranch},
        					"email" : ${config.email}
 	 				]
 	 
-	deployProperties = [
+	/*deployProperties = [
 
 					"businessGroupName" : ${config.bgName},
 					"targetEnvironmentName" : ${config.teName},
