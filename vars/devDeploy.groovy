@@ -10,7 +10,7 @@ def call(Map config= [:])
 	 					"cloneBranch" : config.cBranch,
        					"email" : config.email
 	 				]
-	 
+	 sh "echo envVariables : ${envVariables}"
 	deployProperties = [
 
 					"businessGroupName" : config.bgName,
@@ -22,6 +22,6 @@ def call(Map config= [:])
 					"muleKeyId" : config.mkId
 				]
 
-  
+  	sh "echo deployVariables : ${deployVariables}"
 	sh "echo End of setting env and deployment config variables"
 }
