@@ -34,12 +34,12 @@ def call(Map config= [:])
 
 		stage('Stage1')
 		{
-			sh 'echo Ramakrishna Vajrala'
+			sh 'echo stage1'
 
 		}
 		stage('Stage2')
 		{
-			sh 'echo Akhilesh Vajrala'
+			sh 'echo stage2'
 
 		}
 
