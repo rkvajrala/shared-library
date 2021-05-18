@@ -63,7 +63,7 @@ def call(Map config= [:])
 			def configPath = 'src/main/resources/' + deployProperties.targetEnvironmentName +'.yaml'
 			def yamlProps = readYaml file: "${WORKSPACE}/${configPath}"
 			def jsonProps = JsonOutput.toJson(yamlProps)
-			//def parsedJson = new JsonSlurperClassic().parseText(jsonProps)
+			def parsedJson = new JsonSlurperClassic().parseText(jsonProps)
 			//appProperties = commonUtils.getProperties(parsedJson)
 						
 			//sh'''
