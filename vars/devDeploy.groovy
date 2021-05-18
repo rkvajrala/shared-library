@@ -71,7 +71,7 @@ def call(Map config= [:])
 			//'''''
 
 			sh "echo workspace : ${WORKSPACE}/${configPath}"
-			sh "echo properties filePath : ${configPath}"
+			sh "echo properties filePath : ${parsedJson}"
 			
 			println("== Sucessfully Read the properties from location external-properties/config-" + deployProperties.targetEnvironmentName + ".yaml ==")
 				
