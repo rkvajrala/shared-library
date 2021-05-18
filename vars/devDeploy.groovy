@@ -41,6 +41,11 @@ def call(Map config= [:])
 		{
 			git branch: envVariables.cloneBranch,
 				url: envVariables.cloneURL
+
+			groupId = readMavenPom().getGroupId()
+			artifactId = readMavenPom().getArtifactId()
+			version = readMavenPom().getVersion()
+			sh "echo groupId : ${groupId}"			
 						
 
 		}
