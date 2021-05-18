@@ -45,7 +45,16 @@ def call(Map config= [:])
 			groupId = readMavenPom().getGroupId()
 			artifactId = readMavenPom().getArtifactId()
 			version = readMavenPom().getVersion()
-			sh "echo groupId : ${groupId}"			
+
+			runtimeVersion = readMavenPom().getProperties().getProperty('app.runtime')
+			
+			dPrefix = readMavenPom().getProperties().getProperty('deployment.prefix')
+			dSuffix = readMavenPom().getProperties().getProperty('deployment.suffix')
+
+						
+			sh "echo groupId : ${groupId}"	
+
+			println("== Sucessfully clone the source code in to jenkins workspace from codeCloud ==") 		
 						
 
 		}
