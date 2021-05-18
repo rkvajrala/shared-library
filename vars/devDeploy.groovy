@@ -28,7 +28,16 @@ def call(Map config= [:])
 
 	rulesVersion = "1.0.0"
 
-	
+
+	node
+	{
+
+		stage('Stage1')
+		{
+			sh "Stage1" 
+		}
+
+	}
 	
 
 }
