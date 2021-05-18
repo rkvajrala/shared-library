@@ -60,7 +60,7 @@ def call(Map config= [:])
 		}
 		stage('Get Application Properties') 
 		{
-			def configPath = $WORKSPACE/src/main/resources/' + deployProperties.targetEnvironmentName +'.yaml'
+			def configPath = $WORKSPACE/src/main/resources/deployProperties.targetEnvironmentName +'.yaml'
 			//def yamlProps = readYaml file: 'src/main/resources/' + deployProperties.targetEnvironmentName +'.yaml'
 			//def jsonProps = JsonOutput.toJson(yamlProps)
 			//def parsedJson = new JsonSlurperClassic().parseText(jsonProps)
