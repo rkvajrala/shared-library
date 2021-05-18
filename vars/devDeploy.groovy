@@ -34,12 +34,12 @@ def call(Map config= [:])
 
 		stage('Stage1')
 		{
-			sh "Stage1"
+			sh 'Stage1 completed'
 
 		}
 		stage('Stage2')
 		{
-			sh "Stage2"
+			sh 'Stage2 completed'
 
 		}
 
