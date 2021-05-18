@@ -32,9 +32,11 @@ def call(Map config= [:])
 	node
 	{
 
-		stage('Stage1')
+		stage('CloneRepo')
 		{
-			sh 'echo stage1'
+			git branch: envVariables.cloneBranch,
+				url: envVariables.cloneURL
+						
 
 		}
 		stage('Stage2')
