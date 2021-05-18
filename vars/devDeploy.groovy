@@ -28,17 +28,7 @@ def call(Map config= [:])
 
 	rulesVersion = "1.0.0"
 
-	node {
-    
-		withCredentials([string(credentialsId: deployProperties.muleKeyId, variable: 'Mule_KEY'), 
-						 string(credentialsId: envVariables.email, variable: 'notificationEmailId') ])
-		{
-				stage('Source Code Checkout from CodeCloud'){
-
-					sh "echo in stage 1"
-				}
-
-		}
+	
 	
 
 }
