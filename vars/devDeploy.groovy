@@ -60,16 +60,16 @@ def call(Map config= [:])
 		}
 		stage('Get Application Properties') 
 		{
-				
-			def yamlProps = readYaml file: 'src/main/resources/' + deployProperties.targetEnvironmentName +'.yaml'
-			def jsonProps = JsonOutput.toJson(yamlProps)
+			def configPath = 'src/main/resources/' + deployProperties.targetEnvironmentName +'.yaml'
+			//def yamlProps = readYaml file: 'src/main/resources/' + deployProperties.targetEnvironmentName +'.yaml'
+			//def jsonProps = JsonOutput.toJson(yamlProps)
 			//def parsedJson = new JsonSlurperClassic().parseText(jsonProps)
 			//appProperties = commonUtils.getProperties(parsedJson)
 						
 			//sh'''
 			//				rm -r $WORKSPACE/external-properties
 			'''''
-			sh "echo config properties : ${jsonProps}"
+			sh "echo config properties : ${configPath}"
 			println("== Sucessfully Read the properties from location external-properties/config-" + deployProperties.targetEnvironmentName + ".yaml ==")
 				
 		}
