@@ -34,12 +34,12 @@ def call(Map config= [:])
 
 		stage('Stage1')
 		{
-			sh "echo cloneURL : ${envVariables.cloneURL}"
+			sh "Stage1"
 
 		}
 		stage('Stage2')
 		{
-			sh "echo cloneURL : ${envVariables.cloneURL}"
+			sh "Stage2"
 
 		}
 
