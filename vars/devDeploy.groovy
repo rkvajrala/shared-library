@@ -76,6 +76,45 @@ def call(Map config= [:])
 			println("== Sucessfully Read the properties from location external-properties/config-" + deployProperties.targetEnvironmentName + ".yaml ==")
 				
 		}
+		stage("Maven Package and MUnit testing") 
+		{
+         
+          	def gitTag = sh(returnStdout: true, script: "git tag --contains | head -1").trim()
+         
+            def gitBranch = envVariables.codeCloudBranch
+         
+            def builtOn = new Date().format("yyyy-MM-dd.HH:mm:ss", TimeZone.getTimeZone('UTC'))
+         
+            def builtBy = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%an'").trim()
+         
+            def buildInfo = JsonOutput.toJson([buildInformation:[buildNumber: "${BUILD_NUMBER}", gitTag: gitTag ,gitBranch: gitBranch, builtOn: builtOn, builtBy: builtBy]])
+         
+            println("== buildInfo == " + buildInfo)
+         
+   //        	writeJSON file: 'src/main/resources/META-INF/build-metadata/buildInfo.json', json: buildInfo
+			// if(envVariables.codeCloudBranch != "hotfix"){
+			// 	withMaven(jdk: 'jdk8', maven: 'maven', mavenSettingsConfig: 'MAVEN_SETTINGS') {
+			// 		sh '''echo
+			// 		pwd
+			// 		ls -l
+			// 		which mvn
+			// 		mvn clean package -Dbuild.number=${BUILD_NUMBER} -Dmule.env=Dev -Dmule.key=$Mule_KEY
+			// 		'''
+			// 		println("== Maven Package Build sucessfully completed ==")
+			// 	}
+			// }
+			// else{
+			// 	withMaven(jdk: 'jdk8', maven: 'maven', mavenSettingsConfig: 'MAVEN_SETTINGS') {
+			// 		sh '''echo
+			// 		pwd
+			// 		ls -l
+			// 		which mvn
+			// 		mvn clean package -Dbuild.number=HF${BUILD_NUMBER} -Dmule.env=Dev -Dmule.key=$Mule_KEY -DskipMunitTests=true
+			// 		'''
+			// 		println("== Maven Package Build sucessfully completed without MUnit for hotfix==")
+			// 	}
+			// }  
+		}
 
 	}
 	
