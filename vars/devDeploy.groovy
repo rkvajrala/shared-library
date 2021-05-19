@@ -90,8 +90,10 @@ def call(Map config= [:])
             def buildInfo = JsonOutput.toJson([buildInformation:[buildNumber: "${BUILD_NUMBER}", gitTag: gitTag ,gitBranch: gitBranch, builtOn: builtOn, builtBy: builtBy]])
          
             println("== buildInfo == " + buildInfo)
+    
          
-   //        	writeJSON file: 'src/main/resources/META-INF/build-metadata/buildInfo.json', json: buildInfo
+           	writeJSON file: 'src/main/resources/META-INF/build-metadata/buildInfo.json', json: buildInfo
+	
 			// if(envVariables.codeCloudBranch != "hotfix"){
 			// 	withMaven(jdk: 'jdk8', maven: 'maven', mavenSettingsConfig: 'MAVEN_SETTINGS') {
 			// 		sh '''echo
