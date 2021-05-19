@@ -81,7 +81,7 @@ def call(Map config= [:])
          
           	def gitTag = sh(returnStdout: true, script: "git tag --contains | head -1").trim()
          
-            def gitBranch = envVariables.codeCloudBranch
+            def gitBranch = envVariables.cloneBranch
          
             def builtOn = new Date().format("yyyy-MM-dd.HH:mm:ss", TimeZone.getTimeZone('UTC'))
          
