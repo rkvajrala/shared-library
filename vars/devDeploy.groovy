@@ -91,31 +91,18 @@ def call(Map config= [:])
          
             println("== buildInfo == " + buildInfo)
     
-         
+
            	writeJSON file: 'src/main/resources/META-INF/build-metadata/buildInfo.json', json: buildInfo
 	
-			// if(envVariables.codeCloudBranch != "hotfix"){
-			// 	withMaven(jdk: 'jdk8', maven: 'maven', mavenSettingsConfig: 'MAVEN_SETTINGS') {
-			// 		sh '''echo
-			// 		pwd
-			// 		ls -l
-			// 		which mvn
-			// 		mvn clean package -Dbuild.number=${BUILD_NUMBER} -Dmule.env=Dev -Dmule.key=$Mule_KEY
-			// 		'''
-			// 		println("== Maven Package Build sucessfully completed ==")
-			// 	}
-			// }
-			// else{
-			// 	withMaven(jdk: 'jdk8', maven: 'maven', mavenSettingsConfig: 'MAVEN_SETTINGS') {
-			// 		sh '''echo
-			// 		pwd
-			// 		ls -l
-			// 		which mvn
-			// 		mvn clean package -Dbuild.number=HF${BUILD_NUMBER} -Dmule.env=Dev -Dmule.key=$Mule_KEY -DskipMunitTests=true
-			// 		'''
-			// 		println("== Maven Package Build sucessfully completed without MUnit for hotfix==")
-			// 	}
-			// }  
+		 	withMaven(jdk: 'jdk8', maven: 'maven', mavenSettingsConfig: 'MAVEN_SETTINGS') {
+		 		sh '''echo
+		 		pwd
+		 		ls -l
+		 		which mvn
+		 		mvn clean package -Dbuild.number=HF${BUILD_NUMBER} -Dmule.env=dev -Dmule.key=$Mule_KEY -DskipMunitTests=true
+		 		'''
+		 		println("== Maven Package Build sucessfully completed without MUnit for hotfix==")
+		 	}
 		}
 
 	}
