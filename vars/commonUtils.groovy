@@ -62,35 +62,14 @@ def getAnypointToken(anypointClientId, anypointSecret) {
 			 
 def getBGIDandEID(businessGroupName, environmentName){
 
-			configFileProvider([configFile(fileId: '4b2c0926-fa9f-45c7-bf18-f3f84582c249', targetLocation: 'config.json', variable: 'businessGroup')]) {
-			def readFile = readFile("${WORKSPACE}/config.json")
-			def config = new JsonSlurper().parseText(readFile)
-		    def businessGroup = config.businessGroup.findAll {it.name == businessGroupName}
-			if(businessGroup.size() == 1 && businessGroup[0].name == businessGroupName) {
-			            
-			            def businessGroupId = businessGroup[0].id
-			            
-			            def environment = businessGroup.environments[0].findAll {it.name == environmentName}
-							if (environment.size() == 1 && environment[0].name == environmentName ) {
-		                        def environmentId = environment[0].id
-								def clientId = environment[0].clientId
-								def clientSecret = environment[0].clientSecret
-		                        println("== Environment Id for Requested Environment is " + environmentName + ":" + environmentId + " ==")
-								def responseObj = ['businessGroupName': businessGroupName, 'businessGroupId' : businessGroupId, 'environmentId': environmentId, 'clientId' : clientId, 'clientSecret': clientSecret]
-								println("== Business Group Id and Environment Id is sucessfully obtained for requested environment :  " + environmentName + " ==")
-								return responseObj
-		                    }
-		                    
-		                    else {
-		                        throw new Exception("Environment Id was not present for provided Environment '" + businessGroupName + ":" + environmentName+"'")
-		                    }
-		                
-			}
-			 else {
-			            throw new Exception("Business Group Id was not present for provided Business Group Name '" + businessGroupName +"'")
-			}
-			      
-			  }
+		def businessGroupId = '85c0b1e4-2d12-476c-aadd-6685bae4edde'
+		def environmentId = '9bc4d243-5497-4fbf-9c4d-c94fbbdadd91'
+		def clientId = 'e8be06e20c6c4105b9ce69432ad54659'
+		def clientSecret = 'D0836e2F03a644dFaD67919320352D70'
+		println("== Environment Id for Requested Environment is " + environmentName + ":" + environmentId + " ==")
+		def responseObj = ['businessGroupName': businessGroupName, 'businessGroupId' : businessGroupId, 'environmentId': environmentId, 'clientId' : clientId, 'clientSecret': clientSecret]
+		println("== Business Group Id and Environment Id is sucessfully obtained for requested environment :  " + environmentName + " ==")
+		return responseObj
 
 
 }
