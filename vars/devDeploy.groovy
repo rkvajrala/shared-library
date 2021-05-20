@@ -107,8 +107,9 @@ def call(Map config= [:])
 		stage("Obtain Anypoint Token") {
 						creds = commonUtils.getCredsNonProd() // anypointUsername and anypointPassword
 						println("Credential Used For Anypoint Platform: " + creds.anypointUsernameNP)
-						//authorization = commonUtils.getAnypointToken(creds.anypointUsernameNP, creds.anypointPasswordNP)
-
+						authorization = commonUtils.getAnypointToken(creds.anypointUsernameNP, creds.anypointPasswordNP)
+						println("Credential Used For Anypoint Platform: " + authorization)
+						
 				
 				}
 

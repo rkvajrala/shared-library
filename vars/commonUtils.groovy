@@ -43,7 +43,6 @@ def getCredsNonProd() {
 def getAnypointToken(anypointClientId, anypointSecret) {
         final def(String tokenResponse, int code) = sh(script: "#!/bin/sh -e\n \
 			curl -w '\\n%{response_code}' --location --request POST 'https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token' \
-			--proxy 'http://pxyapp.proxy.att.com:8080' \
 			--header 'Content-Type: application/x-www-form-urlencoded' \
 			--data-urlencode 'client_id=${anypointClientId}' \
 			--data-urlencode 'client_secret=${anypointSecret}' \
