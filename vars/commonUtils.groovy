@@ -33,7 +33,7 @@ def getCreds() {
       }
 }
 def getCredsNonProd() {
-    withCredentials([usernamePassword(credentialsId: 'Anypoint-DevOps-NonProd-ConnectedApp', usernameVariable: 'anypointUsernameNP', passwordVariable: 'anypointPasswordNP')]){
+    withCredentials([usernamePassword(credentialsId: 'MyConnectedAPP', usernameVariable: 'anypointUsernameNP', passwordVariable: 'anypointPasswordNP')]){
 			  def credentailsNP = ["anypointUsernameNP" : anypointUsernameNP, "anypointPasswordNP" : anypointPasswordNP]
 			  println("== Anypoint Platform Credentials are sucessfully obtained for non-Prod deployment == ==")
 			  return credentailsNP
