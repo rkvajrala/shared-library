@@ -174,8 +174,8 @@ def call(Map config= [:])
 					   
 					   def deployApplicationResponse = commonUtils.deployApplication(authorization, businessGroupId, sourceEnvironmentId, appInfoJson, fileName, appName, deployMode, deployProperties.targetEnvironmentName)
 								   
-						println("== Deployment is done ==")
-						println("== Dev Pipeline execution is completed ==")
+						println("== Deployment is done1 ==")
+						println("== Dev Pipeline execution is completed1 ==")
 				}
 
 	}
