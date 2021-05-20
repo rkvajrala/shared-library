@@ -125,6 +125,15 @@ def call(Map config= [:])
 				}
 
 
+		stage("Get Deployed apps list from Target Environment") {
+						
+						def getsourceDeployedApps = commonUtils.getListDeployedApps(authorization, businessGroupId, sourceEnvironmentId)
+						println("== Sucessfully retrived the list of applications deployed in requested environment : " + deployProperties.targetEnvironmentName + " ==")
+						def sourceDeployemntName = deployProperties.deployNamePrefix + "-" + deployProperties.targetEnvironmentName.toLowerCase() + "-" + deploymentName
+						println("=== sourceDeployemntName: " +sourceDeployemntName)
+						def alreadyDeployed = getsourceDeployedApps.data.id.contains(sourceDeployemntName)
+						println("== Application already Deployed ? : " + alreadyDeployed + " ==")
+				}
 
 
 	}

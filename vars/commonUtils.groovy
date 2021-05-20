@@ -75,7 +75,7 @@ def getBGIDandEID(businessGroupName, environmentName){
 }
 
 def getListDeployedApps(authorization, businessGroupId, environmentId) {
-				  def getArmResponse = httpRequest contentType: 'APPLICATION_JSON', httpMode: 'GET', httpProxy: 'http://pxyapp.proxy.att.com:8080', customHeaders: [[maskValue: true, name: 'X-ANYPNT-ENV-ID', value: environmentId], [maskValue: true, name: 'X-ANYPNT-ORG-ID', value: businessGroupId], [maskValue: false, name: 'Authorization', value: authorization]], ignoreSslErrors: true, url: 'https://anypoint.mulesoft.com/armui/api/v1/applications', wrapAsMultipart: false
+				  def getArmResponse = httpRequest contentType: 'APPLICATION_JSON', httpMode: 'GET',  customHeaders: [[maskValue: true, name: 'X-ANYPNT-ENV-ID', value: environmentId], [maskValue: true, name: 'X-ANYPNT-ORG-ID', value: businessGroupId], [maskValue: false, name: 'Authorization', value: authorization]], ignoreSslErrors: true, url: 'https://anypoint.mulesoft.com/armui/api/v1/applications', wrapAsMultipart: false
 		          def parsedResponse = new JsonSlurper().parseText(getArmResponse.content)
 				  if(parsedResponse.size() > 0)
 				   {
