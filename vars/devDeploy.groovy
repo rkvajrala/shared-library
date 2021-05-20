@@ -137,7 +137,7 @@ def call(Map config= [:])
 				}
 
 		stage("Deploy Application to Target Environment") {
-				
+				println("== Application already Deployed ? : " + alreadyDeployed + " ==")
 						if(alreadyDeployed == true) {
 							deployMode = "redeploy" 
 						}
