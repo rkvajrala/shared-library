@@ -50,6 +50,7 @@ def call(Map config= [:])
 			
 			dPrefix = readMavenPom().getProperties().getProperty('deployment.prefix')
 			dSuffix = readMavenPom().getProperties().getProperty('deployment.suffix')
+			dName = artifactId
 
 						
 			sh "echo groupId : ${groupId}"	
@@ -129,7 +130,7 @@ def call(Map config= [:])
 						
 						def getsourceDeployedApps = commonUtils.getListDeployedApps(authorization, businessGroupId, sourceEnvironmentId)
 						println("== Sucessfully retrived the list of applications deployed in requested environment : " + deployProperties.targetEnvironmentName + " ==")
-						def sourceDeployemntName = deployProperties.deployNamePrefix + "-" + deployProperties.targetEnvironmentName.toLowerCase() + "-" + deploymentName
+						def sourceDeployemntName = deployProperties.deployNamePrefix + "-" + deployProperties.targetEnvironmentName.toLowerCase() + "-" + dName
 						println("=== sourceDeployemntName: " +sourceDeployemntName)
 						def alreadyDeployed = getsourceDeployedApps.data.id.contains(sourceDeployemntName)
 						println("== Application already Deployed ? : " + alreadyDeployed + " ==")

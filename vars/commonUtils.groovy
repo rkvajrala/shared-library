@@ -79,13 +79,14 @@ def getListDeployedApps(authorization, businessGroupId, environmentId) {
 		          def parsedResponse = new JsonSlurper().parseText(getArmResponse.content)
 				  if(parsedResponse.size() > 0)
 				   {
+				   	 println("== Sucessfully obtained the list of deployed applications from requested environment : " + environmentId + " ==")
+
 					}
 				   else
 					{
 						throw new Exception("Failed to get the Deployed apps! --> " + getArmResponse)
 					}
-				    println("== Sucessfully obtained the list of deployed applications from requested environment : " + environmentId + " ==")
-
+				   
 				  return parsedResponse
 		         
 
