@@ -113,6 +113,20 @@ def call(Map config= [:])
 				
 				}
 
+		stage("Read Environment and Business Groups from the stored file"){
+						
+						println("== Business Group Name is : " + deployProperties.businessGroupName + " ==")
+						def getSourceIfo = commonUtils.getBGIDandEID(deployProperties.businessGroupName, deployProperties.targetEnvironmentName)
+						sourceEnvironmentId = getSourceIfo.environmentId
+						businessGroupId = getSourceIfo.businessGroupId
+						targetProperties = [ "clientId" : getSourceIfo.clientId, "clientSecret" : getSourceIfo.clientSecret]
+						println("== Business Group Id is : " + businessGroupId + " ==")
+						println("== EnvId is : " + sourceEnvironmentId + " ==")
+				}
+
+
+
+
 	}
 	
 
