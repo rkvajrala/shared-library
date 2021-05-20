@@ -47,10 +47,10 @@ def getAnypointToken(anypointClientId, anypointSecret) {
 			--data-urlencode 'client_id=${anypointClientId}' \
 			--data-urlencode 'client_secret=${anypointSecret}' \
 			--data-urlencode 'grant_type=client_credentials'", returnStdout: true).trim().tokenize("\n")
-		//println("== Anypoint token  response code:" + code);
-		 // if(code != 200){
-		 // 	throw new Exception("=== Unable to authorize with given credentials, Anypoint response --> " + tokenResponse)
-		 // } 
+		println("== Anypoint token  response code:" + code);
+		  if(code != '200'){
+		  	throw new Exception("=== Unable to authorize with given credentials, Anypoint response --> " + tokenResponse)
+		  } 
 		def token = new JsonSlurper().parseText(tokenResponse)
 		if(token.access_token.size() < 0){
 			throw new Exception("Failed to get the login token! --> " + token)
