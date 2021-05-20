@@ -136,6 +136,47 @@ def call(Map config= [:])
 						println("== Application already Deployed ? : " + alreadyDeployed + " ==")
 				}
 
+		stage("Deploy Application to Target Environment") {
+				
+						if(alreadyDeployed == true) {
+							deployMode = "redeploy" 
+						}
+						else { 
+						   
+						   deployMode= "deploy" 
+					   }
+					   
+					   println("== Deploy Mode is : " + deployMode + " ==")
+					   
+					   
+					   def deployProp = ""
+						
+						if (applicationAPIID != "") {
+							println("applicationAPIID found :  " + applicationAPIID)
+							deployProp = ['env': deployProperties.targetEnvironmentName, 'anypoint.platform.client_id' : targetProperties.clientId, 'anypoint.platform.client_secret' : targetProperties.clientSecret, 'ignore.local.config.file' : true]
+							
+						} else {
+
+							println("applicationAPIID Not found :  " + applicationAPIID)
+							
+							deployProp = ['mule.env': deployProperties.targetEnvironmentName, 'mule.key': Mule_KEY, 'anypoint.platform.client_id' : targetProperties.clientId, 'anypoint.platform.client_secret' : targetProperties.clientSecret, 'ignore.local.config.file' : true]
+						}
+											   
+					   def appName = sourceDeployemntName
+					   
+					   //def deployProp = ['mule.env': deployProperties.targetEnvironmentName, 'mule.key': Mule_KEY, 'anypoint.platform.client_id' : targetProperties.clientId, 'anypoint.platform.client_secret' : targetProperties.clientSecret, 'ignore.local.config.file' : true]
+			 
+					   def properties = appProperties << deployProp
+
+					   def appInfoJson = JsonOutput.toJson([domain : "${appName}", muleVersion:[version:runtimeVersion],region:deployProperties.deployRegion,monitoringEnabled:true,monitoringAutoRestart:true,properties: properties, workers:[amount:deployProperties.numberOfWorkers,type:[name:deployProperties.workerSize]],loggingNgEnabled:true])
+					   def fileName = jarName
+					   println("== Before Deploying the Application ==")
+					   
+					   def deployApplicationResponse = commonUtils.deployApplication(authorization, businessGroupId, sourceEnvironmentId, appInfoJson, fileName, appName, deployMode, deployProperties.targetEnvironmentName)
+								   
+						println("== Deployment is done ==")
+						println("== Dev Pipeline execution is completed ==")
+				}
 
 	}
 	
