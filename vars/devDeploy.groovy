@@ -104,6 +104,13 @@ def call(Map config= [:])
 		 		println("== Maven Package Build sucessfully completed without MUnit for hotfix==")
 		 	}
 		}
+		stage("Obtain Anypoint Token") {
+						creds = commonUtils.getCredsNonProd() // anypointUsername and anypointPassword
+						println("Credential Used For Anypoint Platform: " + creds.anypointUsernameNP)
+						//authorization = commonUtils.getAnypointToken(creds.anypointUsernameNP, creds.anypointPasswordNP)
+
+				
+				}
 
 	}
 	
