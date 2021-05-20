@@ -99,8 +99,7 @@ def deployApplication(authorization, businessGroupId, environmentId, appInfoJson
 		println("== Application found. will be redeployed ==")
     	deploy = sh(script: "#!/bin/sh -e\n \
     	                        curl --location --request PUT 'https://anypoint.mulesoft.com/cloudhub/api/v2/applications/${appName}' \
-								--proxy 'http://pxyapp.proxy.att.com:8080' \
-            			        --header 'Authorization:    ${authorization}' \
+								--header 'Authorization:    ${authorization}' \
             			        --header 'X-ANYPNT-ENV-ID: ${environmentId}' \
             			        --header 'X-ANYPNT-ORG-ID: ${businessGroupId}' \
             			        --header 'Content-Type: multipart/form-data' \
@@ -118,8 +117,7 @@ def deployApplication(authorization, businessGroupId, environmentId, appInfoJson
 	
     	deploy = sh(script: "#!/bin/sh -e\n \
     	                        curl  --location --request POST 'https://anypoint.mulesoft.com/cloudhub/api/v2/applications' \
-								--proxy 'http://pxyapp.proxy.att.com:8080' \
-            			        --header 'Authorization:    ${authorization}' \
+								--header 'Authorization:    ${authorization}' \
             			        --header 'X-ANYPNT-ENV-ID: ${environmentId}' \
             			        --header 'X-ANYPNT-ORG-ID: ${businessGroupId}' \
             			        --header 'Content-Type: multipart/form-data' \
