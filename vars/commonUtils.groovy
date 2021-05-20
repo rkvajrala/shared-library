@@ -41,16 +41,16 @@ def getCredsNonProd() {
 }
 
 def getAnypointToken(anypointClientId, anypointSecret) {
-        final def(String tokenResponse, int code) = sh(script: "#!/bin/sh -e\n \
+        final def(String tokenResponse, String code) = sh(script: "#!/bin/sh -e\n \
 			curl -w '\\n%{response_code}' --location --request POST 'https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token' \
 			--header 'Content-Type: application/x-www-form-urlencoded' \
 			--data-urlencode 'client_id=${anypointClientId}' \
 			--data-urlencode 'client_secret=${anypointSecret}' \
 			--data-urlencode 'grant_type=client_credentials'", returnStdout: true).trim().tokenize("\n")
 		//println("== Anypoint token  response code:" + code);
-		 if(code != 200){
-		 	throw new Exception("=== Unable to authorize with given credentials, Anypoint response --> " + tokenResponse)
-		 } 
+		 // if(code != 200){
+		 // 	throw new Exception("=== Unable to authorize with given credentials, Anypoint response --> " + tokenResponse)
+		 // } 
 		def token = new JsonSlurper().parseText(tokenResponse)
 		if(token.access_token.size() < 0){
 			throw new Exception("Failed to get the login token! --> " + token)
