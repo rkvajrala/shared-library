@@ -100,12 +100,12 @@ def call(Map config= [:])
 		 		pwd
 		 		ls -l
 		 		which mvn
-		 		mvn clean package -Dbuild.number=HF${BUILD_NUMBER} -Dmule.env=dev -Dmule.key=$Mule_KEY -DskipMunitTests=true
+		 		mvn clean package -Dbuild.number=HF${BUILD_NUMBER} -Denv=dev -DskipMunitTests=true
 		 		'''
 		 		println("== Maven Package Build sucessfully completed without MUnit for hotfix==")
 		 	}
 		}
-
+/*
 		stage('Copy Artifact to Nexus Repository'){
 					 withMaven(jdk: 'jdk8', maven: 'maven', mavenSettingsConfig: 'MAVEN_SETTINGS') {	
 						{
@@ -114,7 +114,7 @@ def call(Map config= [:])
 						}
 						println("== Artifact successfully deployed to Nexus repository. Deployed file name is :" + jarName + " ==")
 					}
-				}
+				}*/
 		stage("Obtain Anypoint Token") {
 						creds = commonUtils.getCredsNonProd() // anypointUsername and anypointPassword
 						println("Credential Used For Anypoint Platform: " + creds.anypointUsernameNP)
@@ -123,7 +123,6 @@ def call(Map config= [:])
 		}
 
 		stage("Read Environment and Business Groups from the stored file"){
-						
 						println("== Business Group Name is : " + deployProperties.businessGroupName + " ==")
 						def getSourceIfo = commonUtils.getBGIDandEID(deployProperties.businessGroupName, deployProperties.targetEnvironmentName)
 						sourceEnvironmentId = getSourceIfo.environmentId
@@ -132,9 +131,7 @@ def call(Map config= [:])
 						println("== Business Group Id is : " + businessGroupId + " ==")
 						println("== EnvId is : " + sourceEnvironmentId + " ==")
 				}
-
-
-		stage("Get Deployed apps list from Target Environment") {
+				stage("Get Deployed apps list from Target Environment") {
 						
 						def getsourceDeployedApps = commonUtils.getListDeployedApps(authorization, businessGroupId, sourceEnvironmentId)
 						println("== Sucessfully retrived the list of applications deployed in requested environment : " + deployProperties.targetEnvironmentName + " ==")
@@ -143,9 +140,8 @@ def call(Map config= [:])
 						alreadyDeployed = getsourceDeployedApps.data.id.contains(sourceDeployemntName)
 						println("== Application already Deployed ? : " + alreadyDeployed + " ==")
 				}
-
-		stage("Deploy Application to Target Environment") {
-				println("== Application already Deployed ? : " + alreadyDeployed + " ==")
+				stage("Deploy Application to Target Environment") {
+						println("== Application already Deployed ? : " + alreadyDeployed + " ==")
 						if(alreadyDeployed == true) {
 							deployMode = "redeploy" 
 						}
