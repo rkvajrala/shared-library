@@ -154,8 +154,7 @@ def call(Map config= [:])
 						   deployMode= "deploy" 
 					   }
 					   
-					   println("== Deploy Mode is : " + deployMode + " ==")
-					   
+					   println("=~~~Deploy Mode is : " + deployMode + " ==")
 					   
 					   def deployProp = ""
 						def applicationAPIID = ""
