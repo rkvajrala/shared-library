@@ -150,7 +150,7 @@ def call(Map config= [:])
 					   
 					   
 					   def deployProp = ""
-						defapplicationAPIID = ""
+						def applicationAPIID = ""
 						if (applicationAPIID != "") {
 							println("applicationAPIID found :  " + applicationAPIID)
 							deployProp = ['env': deployProperties.targetEnvironmentName, 'anypoint.platform.client_id' : targetProperties.clientId, 'anypoint.platform.client_secret' : targetProperties.clientSecret, 'ignore.local.config.file' : true]
