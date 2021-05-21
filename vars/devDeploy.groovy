@@ -159,7 +159,7 @@ def call(Map config= [:])
 
 							println("applicationAPIID Not found :  " + applicationAPIID)
 							
-							deployProp = ['mule.env': deployProperties.targetEnvironmentName, 'mule.key': Mule_KEY, 'anypoint.platform.client_id' : targetProperties.clientId, 'anypoint.platform.client_secret' : targetProperties.clientSecret, 'ignore.local.config.file' : true]
+							deployProp = ['env': deployProperties.targetEnvironmentName, 'anypoint.platform.client_id' : targetProperties.clientId, 'anypoint.platform.client_secret' : targetProperties.clientSecret, 'ignore.local.config.file' : true]
 						}
 											   
 					   def appName = sourceDeployemntName
