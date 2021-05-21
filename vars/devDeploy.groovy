@@ -120,9 +120,7 @@ def call(Map config= [:])
 						println("Credential Used For Anypoint Platform: " + creds.anypointUsernameNP)
 						authorization = commonUtils.getAnypointToken(creds.anypointUsernameNP, creds.anypointPasswordNP)
 						println("Credential Used For Anypoint Platform: " + authorization)
-						
-				
-				}
+		}
 
 		stage("Read Environment and Business Groups from the stored file"){
 						
