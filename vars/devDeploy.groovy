@@ -65,7 +65,7 @@ def call(Map config= [:])
 			def yamlProps = readYaml file: "${WORKSPACE}/${configPath}"
 			def jsonProps = JsonOutput.toJson(yamlProps)
 			def parsedJson = new JsonSlurperClassic().parseText(jsonProps)
-			def appProperties = commonUtils.getProperties(parsedJson)
+			 appProperties = commonUtils.getProperties(parsedJson)
 						
 			//sh'''
 			//				rm -r $WORKSPACE/external-properties
