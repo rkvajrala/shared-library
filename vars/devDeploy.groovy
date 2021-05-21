@@ -100,7 +100,7 @@ def call(Map config= [:])
 		 		pwd
 		 		ls -l
 		 		which mvn
-		 		mvn clean package -Dbuild.number=HF${BUILD_NUMBER} -Denv=dev -DskipMunitTests=true
+		 		mvn clean package -Dbuild.number=HF${BUILD_NUMBER} -Denv=dev -DskipMunitTests=true -Dpackaging=jar -Dfile=${WORKSPACE}/target/${artifactId}-B${BUILD_NUMBER}-${version}-mule-application.jar
 		 		'''
 		 		println("== Maven Package Build sucessfully completed without MUnit for hotfix==")
 		 	}
