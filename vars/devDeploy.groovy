@@ -105,6 +105,16 @@ def call(Map config= [:])
 		 		println("== Maven Package Build sucessfully completed without MUnit for hotfix==")
 		 	}
 		}
+
+		stage('Copy Artifact to Nexus Repository'){
+					 withMaven(jdk: 'jdk8', maven: 'maven', mavenSettingsConfig: 'MAVEN_SETTINGS') {	
+						{
+							sh "mvn deploy:deploy-file -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=B${BUILD_NUMBER}-${version} -DgeneratePom=true -Dpackaging=jar -Dfile=${WORKSPACE}/target/${artifactId}-B${BUILD_NUMBER}-${version}-mule-application.jar"
+							jarName = "${artifactId}-B${BUILD_NUMBER}-${version}-mule-application.jar"
+						}
+						println("== Artifact successfully deployed to Nexus repository. Deployed file name is :" + jarName + " ==")
+					}
+				}
 		stage("Obtain Anypoint Token") {
 						creds = commonUtils.getCredsNonProd() // anypointUsername and anypointPassword
 						println("Credential Used For Anypoint Platform: " + creds.anypointUsernameNP)
