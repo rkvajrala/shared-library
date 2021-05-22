@@ -117,7 +117,7 @@ def call(Map config= [:])
 						println("== Artifact successfully deployed to Nexus repository. Deployed file name is :" + jarName + " ==")
 					}
 				}
-				/*
+				
 		stage("Obtain Anypoint Token") {
 						creds = commonUtils.getCredsNonProd() // anypointUsername and anypointPassword
 						println("Credential Used For Anypoint Platform: " + creds.anypointUsernameNP)
@@ -182,7 +182,7 @@ def call(Map config= [:])
 								   
 						println("== Deployment is done1 ==")
 						println("== Dev Pipeline execution is completed1 ==")
-				}*/
+				}
 
 	}
 	
