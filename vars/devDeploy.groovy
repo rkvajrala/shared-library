@@ -100,11 +100,12 @@ def call(Map config= [:])
 		 		pwd
 		 		ls -l
 		 		which mvn
-		 		mvn clean package -Dbuild.number=B${BUILD_NUMBER} -Denv=dev -DskipMunitTests=true -Dpackaging=jar -Dfile=${WORKSPACE}/target/${artifactId}-B${BUILD_NUMBER}-${version}-mule-application.jar
+		 		mvn clean package -Dbuild.number=B${BUILD_NUMBER} -Dmule.env=dev
+							
 		 		'''
 		 		println("== Maven Package Build sucessfully completed without MUnit for hotfix==")
 		 	}
-		 	
+
 		}
 		/*stage('Send Artifact to Nexus Repository'){
 					 withMaven(jdk: 'jdk8', maven: 'maven', mavenSettingsConfig: 'MAVEN_SETTINGS') 
