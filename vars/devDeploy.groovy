@@ -111,7 +111,7 @@ def call(Map config= [:])
 					 withMaven(jdk: 'jdk8', maven: 'maven', mavenSettingsConfig: 'MAVEN_SETTINGS') 
 					 {	
 						
-							sh "mvn deploy:deploy-file -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=B${BUILD_NUMBER}-${version} -DgeneratePom=true -Dpackaging=jar -Durl=http://localhost:8091/repository/mule-releases/ -Dfile=${WORKSPACE}/target/${artifactId}-B${BUILD_NUMBER}-${version}-mule-application.jar" -DrepositoryId=nexus"
+							sh "mvn deploy:deploy-file -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=B${BUILD_NUMBER}-${version} -DgeneratePom=true -Dpackaging=jar -Durl=http://localhost:8091/repository/mule-releases/ -Dfile=${WORKSPACE}/target/${artifactId}-B${BUILD_NUMBER}-${version}-mule-application.jar -DrepositoryId=nexus"
 							jarName = "${artifactId}-B${BUILD_NUMBER}-${version}-mule-application.jar"
 						
 						println("== Artifact successfully deployed to Nexus repository. Deployed file name is :" + jarName + " ==")
