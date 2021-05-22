@@ -103,20 +103,21 @@ def call(Map config= [:])
 		 		mvn clean package -Dbuild.number=${BUILD_NUMBER} -Dmule.env=dev
 							
 		 		'''
-		 		println("== Maven Package Build sucessfully completed without MUnit for hotfix==")
+		 		println("== Maven Package Build sucessfully completed==")
 		 	}
 
 		}
-		/*stage('Send Artifact to Nexus Repository'){
+		stage('Send Artifact to Nexus Repository'){
 					 withMaven(jdk: 'jdk8', maven: 'maven', mavenSettingsConfig: 'MAVEN_SETTINGS') 
 					 {	
 						
-							sh "mvn deploy:deploy-file -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=B${BUILD_NUMBER}-${version} -DgeneratePom=true -Dpackaging=jar -Durl=http://localhost:8091/repository/maven-releases/ -Dfile=${WORKSPACE}/target/${artifactId}-B${BUILD_NUMBER}-${version}-mule-application.jar"
+							sh "mvn deploy:deploy-file -DgroupId=${groupId} -DartifactId=${artifactId} -Dversion=B${BUILD_NUMBER}-${version} -DgeneratePom=true -Dpackaging=jar -Dfile=${WORKSPACE}/target/${artifactId}-B${BUILD_NUMBER}-${version}-mule-application.jar"
 							jarName = "${artifactId}-B${BUILD_NUMBER}-${version}-mule-application.jar"
 						
 						println("== Artifact successfully deployed to Nexus repository. Deployed file name is :" + jarName + " ==")
 					}
 				}
+				/*
 		stage("Obtain Anypoint Token") {
 						creds = commonUtils.getCredsNonProd() // anypointUsername and anypointPassword
 						println("Credential Used For Anypoint Platform: " + creds.anypointUsernameNP)
