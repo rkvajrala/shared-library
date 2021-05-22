@@ -100,7 +100,7 @@ def call(Map config= [:])
 		 		pwd
 		 		ls -l
 		 		which mvn
-		 		mvn clean package -Dbuild.number=B${BUILD_NUMBER} -Dmule.env=dev
+		 		mvn clean package -Dbuild.number=${BUILD_NUMBER} -Dmule.env=dev
 							
 		 		'''
 		 		println("== Maven Package Build sucessfully completed without MUnit for hotfix==")
