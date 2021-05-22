@@ -104,8 +104,9 @@ def call(Map config= [:])
 		 		'''
 		 		println("== Maven Package Build sucessfully completed without MUnit for hotfix==")
 		 	}
+		 	
 		}
-		stage('Send Artifact to Nexus Repository'){
+		/*stage('Send Artifact to Nexus Repository'){
 					 withMaven(jdk: 'jdk8', maven: 'maven', mavenSettingsConfig: 'MAVEN_SETTINGS') 
 					 {	
 						
@@ -179,7 +180,7 @@ def call(Map config= [:])
 								   
 						println("== Deployment is done1 ==")
 						println("== Dev Pipeline execution is completed1 ==")
-				}
+				}*/
 
 	}
 	
