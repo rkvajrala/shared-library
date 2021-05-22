@@ -110,7 +110,6 @@ def deployApplication(authorization, businessGroupId, environmentId, appInfoJson
     
 
 	}
-	
 	else {
 	
 		println("== Application Notfound, new application will be deployed ==")
