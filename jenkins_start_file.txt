@@ -1,0 +1,17 @@
+@Library('shared-library') _
+
+node{
+  devDeploy(
+                        cURL:"https://github.com/rkvajrala/first-api.git",
+                        cBranch:"master",
+                        email: "${notifyEmail}",
+                        bgName: "${bgName}",
+                        teName: "${targetEnv}",
+                        nofWorkers:"${noWorkers}",
+                        wSize:"${workerSize}",
+                        dRegion:"${region}",
+                        dnPrefix:"dgi",
+                        mkId:"MuleDevKey"
+                        
+                )
+}
